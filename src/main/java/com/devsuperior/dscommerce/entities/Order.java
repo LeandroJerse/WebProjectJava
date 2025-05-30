@@ -5,18 +5,21 @@ import jakarta.persistence.*;
 import java.time.Instant;
 
 @Entity
-@Table(name = "td_order")
+@Table(name = "tb_order")
 public class Order {
 
     @Id
     private Long id;
-    @Column(columnDefinition = "TIMESTAMP TIME ZONE")
+    @Column(columnDefinition = "TIMESTAMP")
     private Instant moment;
     private OrderStatus status;
 
     @ManyToOne
     @JoinColumn(name = "client_id")
     private User client;
+
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+    private Payment payment;
 
     public Order() {}
 
