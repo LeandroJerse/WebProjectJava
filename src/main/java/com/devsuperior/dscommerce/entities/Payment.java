@@ -1,20 +1,27 @@
 package com.devsuperior.dscommerce.entities;
 
-import jakarta.persistence.*;
 
 import java.time.Instant;
 import java.util.Objects;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.MapsId;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+
 
 @Entity
 @Table(name = "tb_payment")
 public class Payment {
 
 
-
-
     @Id
     private Long id;
-    @Column(columnDefinition = "TIMESTAMP TIME ZONE")
+    
+    @Column(columnDefinition = "TIMESTAMP")
+
     private Instant moment;
 
     @OneToOne
@@ -64,4 +71,6 @@ public class Payment {
     public int hashCode() {
         return Objects.hashCode(id);
     }
-}
+
+} 
+
