@@ -38,8 +38,11 @@ public class ProductController {
         productDTO = productService.insert(productDTO);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(productDTO.getId()).toUri();
         return ResponseEntity.created(uri).body(productDTO);
+    }
 
-
-
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<ProductDTO> update(@PathVariable Long id, @RequestBody ProductDTO dto) {
+        dto = productService.update(id, dto);
+        return ResponseEntity.ok(dto);
     }
 }
